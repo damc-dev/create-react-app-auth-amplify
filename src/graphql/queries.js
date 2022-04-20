@@ -1,115 +1,118 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getTodo = /* GraphQL */ `
-  query GetTodo($id: ID!) {
-    getTodo(id: $id) {
+export const getChoice = /* GraphQL */ `
+  query GetChoice($id: ID!) {
+    getChoice(id: $id) {
+      content
       id
-      name
+      createdAt
+      updatedAt
+      questionChoicesId
+    }
+  }
+`;
+export const listChoices = /* GraphQL */ `
+  query ListChoices(
+    $filter: ModelChoiceFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listChoices(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        content
+        id
+        createdAt
+        updatedAt
+        questionChoicesId
+      }
+      nextToken
+    }
+  }
+`;
+export const getQuestion = /* GraphQL */ `
+  query GetQuestion($id: ID!) {
+    getQuestion(id: $id) {
+      content
+      choices {
+        items {
+          content
+          id
+          createdAt
+          updatedAt
+          questionChoicesId
+        }
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+      presentationQuestionsId
+    }
+  }
+`;
+export const listQuestions = /* GraphQL */ `
+  query ListQuestions(
+    $filter: ModelQuestionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listQuestions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        content
+        choices {
+          nextToken
+        }
+        id
+        createdAt
+        updatedAt
+        presentationQuestionsId
+      }
+      nextToken
+    }
+  }
+`;
+export const getPresentation = /* GraphQL */ `
+  query GetPresentation($id: ID!) {
+    getPresentation(id: $id) {
+      id
+      title
       description
+      owner
+      timestamp
+      questions {
+        items {
+          content
+          id
+          createdAt
+          updatedAt
+          presentationQuestionsId
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
   }
 `;
-export const listTodos = /* GraphQL */ `
-  query ListTodos(
-    $filter: ModelTodoFilterInput
+export const listPresentations = /* GraphQL */ `
+  query ListPresentations(
+    $filter: ModelPresentationFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listPresentations(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        name
+        title
         description
+        owner
+        timestamp
+        questions {
+          nextToken
+        }
         createdAt
         updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getPost = /* GraphQL */ `
-  query GetPost($id: ID!) {
-    getPost(id: $id) {
-      type
-      id
-      content
-      owner
-      timestamp
-    }
-  }
-`;
-export const listPosts = /* GraphQL */ `
-  query ListPosts(
-    $filter: ModelPostFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        type
-        id
-        content
-        owner
-        timestamp
-      }
-      nextToken
-    }
-  }
-`;
-export const listPostsSortedByTimestamp = /* GraphQL */ `
-  query ListPostsSortedByTimestamp(
-    $type: String
-    $timestamp: ModelIntKeyConditionInput
-    $sortDirection: ModelSortDirection
-    $filter: ModelPostFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listPostsSortedByTimestamp(
-      type: $type
-      timestamp: $timestamp
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        type
-        id
-        content
-        owner
-        timestamp
-      }
-      nextToken
-    }
-  }
-`;
-export const listPostsBySpecificOwner = /* GraphQL */ `
-  query ListPostsBySpecificOwner(
-    $owner: String
-    $timestamp: ModelIntKeyConditionInput
-    $sortDirection: ModelSortDirection
-    $filter: ModelPostFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listPostsBySpecificOwner(
-      owner: $owner
-      timestamp: $timestamp
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        type
-        id
-        content
-        owner
-        timestamp
       }
       nextToken
     }
