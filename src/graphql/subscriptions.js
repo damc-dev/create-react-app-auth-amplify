@@ -100,7 +100,6 @@ export const onDeleteQuestion = /* GraphQL */ `
 export const onCreatePresentation = /* GraphQL */ `
   subscription OnCreatePresentation {
     onCreatePresentation {
-      id
       title
       description
       owner
@@ -115,6 +114,7 @@ export const onCreatePresentation = /* GraphQL */ `
         }
         nextToken
       }
+      id
       createdAt
       updatedAt
     }
@@ -123,7 +123,6 @@ export const onCreatePresentation = /* GraphQL */ `
 export const onUpdatePresentation = /* GraphQL */ `
   subscription OnUpdatePresentation {
     onUpdatePresentation {
-      id
       title
       description
       owner
@@ -138,6 +137,7 @@ export const onUpdatePresentation = /* GraphQL */ `
         }
         nextToken
       }
+      id
       createdAt
       updatedAt
     }
@@ -146,7 +146,6 @@ export const onUpdatePresentation = /* GraphQL */ `
 export const onDeletePresentation = /* GraphQL */ `
   subscription OnDeletePresentation {
     onDeletePresentation {
-      id
       title
       description
       owner
@@ -161,8 +160,318 @@ export const onDeletePresentation = /* GraphQL */ `
         }
         nextToken
       }
+      id
       createdAt
       updatedAt
+    }
+  }
+`;
+export const onCreateEvent = /* GraphQL */ `
+  subscription OnCreateEvent {
+    onCreateEvent {
+      title
+      attendees {
+        items {
+          userId
+          name
+          email
+          id
+          createdAt
+          updatedAt
+          eventAttendeesId
+        }
+        nextToken
+      }
+      activeQuestion {
+        content
+        choices {
+          nextToken
+        }
+        id
+        createdAt
+        updatedAt
+        presentationQuestionsId
+      }
+      answers {
+        items {
+          questionText
+          attendeeIdentifier
+          choiceText
+          id
+          createdAt
+          updatedAt
+          eventAnswersId
+          answerQuestionId
+          answerAttendeeId
+          answerChoiceId
+        }
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+      eventActiveQuestionId
+    }
+  }
+`;
+export const onUpdateEvent = /* GraphQL */ `
+  subscription OnUpdateEvent {
+    onUpdateEvent {
+      title
+      attendees {
+        items {
+          userId
+          name
+          email
+          id
+          createdAt
+          updatedAt
+          eventAttendeesId
+        }
+        nextToken
+      }
+      activeQuestion {
+        content
+        choices {
+          nextToken
+        }
+        id
+        createdAt
+        updatedAt
+        presentationQuestionsId
+      }
+      answers {
+        items {
+          questionText
+          attendeeIdentifier
+          choiceText
+          id
+          createdAt
+          updatedAt
+          eventAnswersId
+          answerQuestionId
+          answerAttendeeId
+          answerChoiceId
+        }
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+      eventActiveQuestionId
+    }
+  }
+`;
+export const onDeleteEvent = /* GraphQL */ `
+  subscription OnDeleteEvent {
+    onDeleteEvent {
+      title
+      attendees {
+        items {
+          userId
+          name
+          email
+          id
+          createdAt
+          updatedAt
+          eventAttendeesId
+        }
+        nextToken
+      }
+      activeQuestion {
+        content
+        choices {
+          nextToken
+        }
+        id
+        createdAt
+        updatedAt
+        presentationQuestionsId
+      }
+      answers {
+        items {
+          questionText
+          attendeeIdentifier
+          choiceText
+          id
+          createdAt
+          updatedAt
+          eventAnswersId
+          answerQuestionId
+          answerAttendeeId
+          answerChoiceId
+        }
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+      eventActiveQuestionId
+    }
+  }
+`;
+export const onCreateAttendee = /* GraphQL */ `
+  subscription OnCreateAttendee {
+    onCreateAttendee {
+      userId
+      name
+      email
+      id
+      createdAt
+      updatedAt
+      eventAttendeesId
+    }
+  }
+`;
+export const onUpdateAttendee = /* GraphQL */ `
+  subscription OnUpdateAttendee {
+    onUpdateAttendee {
+      userId
+      name
+      email
+      id
+      createdAt
+      updatedAt
+      eventAttendeesId
+    }
+  }
+`;
+export const onDeleteAttendee = /* GraphQL */ `
+  subscription OnDeleteAttendee {
+    onDeleteAttendee {
+      userId
+      name
+      email
+      id
+      createdAt
+      updatedAt
+      eventAttendeesId
+    }
+  }
+`;
+export const onCreateAnswer = /* GraphQL */ `
+  subscription OnCreateAnswer {
+    onCreateAnswer {
+      question {
+        content
+        choices {
+          nextToken
+        }
+        id
+        createdAt
+        updatedAt
+        presentationQuestionsId
+      }
+      questionText
+      attendee {
+        userId
+        name
+        email
+        id
+        createdAt
+        updatedAt
+        eventAttendeesId
+      }
+      attendeeIdentifier
+      choice {
+        content
+        id
+        createdAt
+        updatedAt
+        questionChoicesId
+      }
+      choiceText
+      id
+      createdAt
+      updatedAt
+      eventAnswersId
+      answerQuestionId
+      answerAttendeeId
+      answerChoiceId
+    }
+  }
+`;
+export const onUpdateAnswer = /* GraphQL */ `
+  subscription OnUpdateAnswer {
+    onUpdateAnswer {
+      question {
+        content
+        choices {
+          nextToken
+        }
+        id
+        createdAt
+        updatedAt
+        presentationQuestionsId
+      }
+      questionText
+      attendee {
+        userId
+        name
+        email
+        id
+        createdAt
+        updatedAt
+        eventAttendeesId
+      }
+      attendeeIdentifier
+      choice {
+        content
+        id
+        createdAt
+        updatedAt
+        questionChoicesId
+      }
+      choiceText
+      id
+      createdAt
+      updatedAt
+      eventAnswersId
+      answerQuestionId
+      answerAttendeeId
+      answerChoiceId
+    }
+  }
+`;
+export const onDeleteAnswer = /* GraphQL */ `
+  subscription OnDeleteAnswer {
+    onDeleteAnswer {
+      question {
+        content
+        choices {
+          nextToken
+        }
+        id
+        createdAt
+        updatedAt
+        presentationQuestionsId
+      }
+      questionText
+      attendee {
+        userId
+        name
+        email
+        id
+        createdAt
+        updatedAt
+        eventAttendeesId
+      }
+      attendeeIdentifier
+      choice {
+        content
+        id
+        createdAt
+        updatedAt
+        questionChoicesId
+      }
+      choiceText
+      id
+      createdAt
+      updatedAt
+      eventAnswersId
+      answerQuestionId
+      answerAttendeeId
+      answerChoiceId
     }
   }
 `;

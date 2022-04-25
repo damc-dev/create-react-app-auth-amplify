@@ -26,7 +26,16 @@
               "userPoolId": "authcognitocf0c6096"
             }
           },
-          "additionalAuthenticationProviders": []
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "API_KEY",
+              "apiKeyConfig": {
+                "description": "What?",
+                "apiKeyExpirationDays": 365,
+                "apiKeyExpirationDate": "2023-04-20T23:10:43.495Z"
+              }
+            }
+          ]
         }
       }
     }

@@ -8,11 +8,33 @@ type Question @model @auth(rules: [{ allow: public }]) {
 }
 
 type Presentation @model @auth(rules: [{ allow: public }]) {
-  id: ID
   title: String
   description: String
   owner: String
   timestamp: Int!
   questions: [Question] @hasMany
+}
+
+
+type Event @model @auth(rules: [{ allow: public }]) {
+  title: String
+  attendees: [Attendee] @hasMany
+  activeQuestion: Question @hasOne
+  answers: [Answer] @hasMany
+}
+
+type Attendee @model @auth(rules: [{ allow: public }]) {
+  userId: String
+  name: String
+  email: String
+}
+
+type Answer @model @auth(rules: [{ allow: public }]) {
+  question: Question @hasOne
+  questionText: String
+  attendee: Attendee @hasOne
+  attendeeIdentifier: String
+  choice: Choice @hasOne
+  choiceText: String
 }
 

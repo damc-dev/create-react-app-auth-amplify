@@ -121,7 +121,6 @@ export const createPresentation = /* GraphQL */ `
     $condition: ModelPresentationConditionInput
   ) {
     createPresentation(input: $input, condition: $condition) {
-      id
       title
       description
       owner
@@ -136,6 +135,7 @@ export const createPresentation = /* GraphQL */ `
         }
         nextToken
       }
+      id
       createdAt
       updatedAt
     }
@@ -147,7 +147,6 @@ export const updatePresentation = /* GraphQL */ `
     $condition: ModelPresentationConditionInput
   ) {
     updatePresentation(input: $input, condition: $condition) {
-      id
       title
       description
       owner
@@ -162,6 +161,7 @@ export const updatePresentation = /* GraphQL */ `
         }
         nextToken
       }
+      id
       createdAt
       updatedAt
     }
@@ -173,7 +173,6 @@ export const deletePresentation = /* GraphQL */ `
     $condition: ModelPresentationConditionInput
   ) {
     deletePresentation(input: $input, condition: $condition) {
-      id
       title
       description
       owner
@@ -188,8 +187,345 @@ export const deletePresentation = /* GraphQL */ `
         }
         nextToken
       }
+      id
       createdAt
       updatedAt
+    }
+  }
+`;
+export const createEvent = /* GraphQL */ `
+  mutation CreateEvent(
+    $input: CreateEventInput!
+    $condition: ModelEventConditionInput
+  ) {
+    createEvent(input: $input, condition: $condition) {
+      title
+      attendees {
+        items {
+          userId
+          name
+          email
+          id
+          createdAt
+          updatedAt
+          eventAttendeesId
+        }
+        nextToken
+      }
+      activeQuestion {
+        content
+        choices {
+          nextToken
+        }
+        id
+        createdAt
+        updatedAt
+        presentationQuestionsId
+      }
+      answers {
+        items {
+          questionText
+          attendeeIdentifier
+          choiceText
+          id
+          createdAt
+          updatedAt
+          eventAnswersId
+          answerQuestionId
+          answerAttendeeId
+          answerChoiceId
+        }
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+      eventActiveQuestionId
+    }
+  }
+`;
+export const updateEvent = /* GraphQL */ `
+  mutation UpdateEvent(
+    $input: UpdateEventInput!
+    $condition: ModelEventConditionInput
+  ) {
+    updateEvent(input: $input, condition: $condition) {
+      title
+      attendees {
+        items {
+          userId
+          name
+          email
+          id
+          createdAt
+          updatedAt
+          eventAttendeesId
+        }
+        nextToken
+      }
+      activeQuestion {
+        content
+        choices {
+          nextToken
+        }
+        id
+        createdAt
+        updatedAt
+        presentationQuestionsId
+      }
+      answers {
+        items {
+          questionText
+          attendeeIdentifier
+          choiceText
+          id
+          createdAt
+          updatedAt
+          eventAnswersId
+          answerQuestionId
+          answerAttendeeId
+          answerChoiceId
+        }
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+      eventActiveQuestionId
+    }
+  }
+`;
+export const deleteEvent = /* GraphQL */ `
+  mutation DeleteEvent(
+    $input: DeleteEventInput!
+    $condition: ModelEventConditionInput
+  ) {
+    deleteEvent(input: $input, condition: $condition) {
+      title
+      attendees {
+        items {
+          userId
+          name
+          email
+          id
+          createdAt
+          updatedAt
+          eventAttendeesId
+        }
+        nextToken
+      }
+      activeQuestion {
+        content
+        choices {
+          nextToken
+        }
+        id
+        createdAt
+        updatedAt
+        presentationQuestionsId
+      }
+      answers {
+        items {
+          questionText
+          attendeeIdentifier
+          choiceText
+          id
+          createdAt
+          updatedAt
+          eventAnswersId
+          answerQuestionId
+          answerAttendeeId
+          answerChoiceId
+        }
+        nextToken
+      }
+      id
+      createdAt
+      updatedAt
+      eventActiveQuestionId
+    }
+  }
+`;
+export const createAttendee = /* GraphQL */ `
+  mutation CreateAttendee(
+    $input: CreateAttendeeInput!
+    $condition: ModelAttendeeConditionInput
+  ) {
+    createAttendee(input: $input, condition: $condition) {
+      userId
+      name
+      email
+      id
+      createdAt
+      updatedAt
+      eventAttendeesId
+    }
+  }
+`;
+export const updateAttendee = /* GraphQL */ `
+  mutation UpdateAttendee(
+    $input: UpdateAttendeeInput!
+    $condition: ModelAttendeeConditionInput
+  ) {
+    updateAttendee(input: $input, condition: $condition) {
+      userId
+      name
+      email
+      id
+      createdAt
+      updatedAt
+      eventAttendeesId
+    }
+  }
+`;
+export const deleteAttendee = /* GraphQL */ `
+  mutation DeleteAttendee(
+    $input: DeleteAttendeeInput!
+    $condition: ModelAttendeeConditionInput
+  ) {
+    deleteAttendee(input: $input, condition: $condition) {
+      userId
+      name
+      email
+      id
+      createdAt
+      updatedAt
+      eventAttendeesId
+    }
+  }
+`;
+export const createAnswer = /* GraphQL */ `
+  mutation CreateAnswer(
+    $input: CreateAnswerInput!
+    $condition: ModelAnswerConditionInput
+  ) {
+    createAnswer(input: $input, condition: $condition) {
+      question {
+        content
+        choices {
+          nextToken
+        }
+        id
+        createdAt
+        updatedAt
+        presentationQuestionsId
+      }
+      questionText
+      attendee {
+        userId
+        name
+        email
+        id
+        createdAt
+        updatedAt
+        eventAttendeesId
+      }
+      attendeeIdentifier
+      choice {
+        content
+        id
+        createdAt
+        updatedAt
+        questionChoicesId
+      }
+      choiceText
+      id
+      createdAt
+      updatedAt
+      eventAnswersId
+      answerQuestionId
+      answerAttendeeId
+      answerChoiceId
+    }
+  }
+`;
+export const updateAnswer = /* GraphQL */ `
+  mutation UpdateAnswer(
+    $input: UpdateAnswerInput!
+    $condition: ModelAnswerConditionInput
+  ) {
+    updateAnswer(input: $input, condition: $condition) {
+      question {
+        content
+        choices {
+          nextToken
+        }
+        id
+        createdAt
+        updatedAt
+        presentationQuestionsId
+      }
+      questionText
+      attendee {
+        userId
+        name
+        email
+        id
+        createdAt
+        updatedAt
+        eventAttendeesId
+      }
+      attendeeIdentifier
+      choice {
+        content
+        id
+        createdAt
+        updatedAt
+        questionChoicesId
+      }
+      choiceText
+      id
+      createdAt
+      updatedAt
+      eventAnswersId
+      answerQuestionId
+      answerAttendeeId
+      answerChoiceId
+    }
+  }
+`;
+export const deleteAnswer = /* GraphQL */ `
+  mutation DeleteAnswer(
+    $input: DeleteAnswerInput!
+    $condition: ModelAnswerConditionInput
+  ) {
+    deleteAnswer(input: $input, condition: $condition) {
+      question {
+        content
+        choices {
+          nextToken
+        }
+        id
+        createdAt
+        updatedAt
+        presentationQuestionsId
+      }
+      questionText
+      attendee {
+        userId
+        name
+        email
+        id
+        createdAt
+        updatedAt
+        eventAttendeesId
+      }
+      attendeeIdentifier
+      choice {
+        content
+        id
+        createdAt
+        updatedAt
+        questionChoicesId
+      }
+      choiceText
+      id
+      createdAt
+      updatedAt
+      eventAnswersId
+      answerQuestionId
+      answerAttendeeId
+      answerChoiceId
     }
   }
 `;
